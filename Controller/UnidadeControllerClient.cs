@@ -1,33 +1,31 @@
-﻿using FarmPlannerClient.PrincipioAtivo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
-using System.Threading.Tasks;
+using FarmPlannerClient.Produto;
 
 namespace FarmPlannerClient.Controller
 {
-    public class PrincipioAtivoControllerClient
+    public class UnidadeControllerClient
     {
         private readonly HttpClient _httpClient;
 
-        public PrincipioAtivoControllerClient(HttpClient httpClient)
+        public UnidadeControllerClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-        public async Task<List<PrincipioAtivoViewModel>> Lista(string? filtro)
+        public async Task<List<UnidadeViewModel>> Lista(string? filtro)
         {
-            PrincipioAtivoViewModel reg = new PrincipioAtivoViewModel();
+            UnidadeViewModel reg = new UnidadeViewModel();
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            var response = await _httpClient.GetAsync("api/PrincipioAtivo?filtro=" + filtro);
+            var response = await _httpClient.GetAsync("api/Unidade/?filtro=" + filtro);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
-            var c = System.Text.Json.JsonSerializer.Deserialize<List<PrincipioAtivoViewModel>>(jsonResponse);
+            var c = System.Text.Json.JsonSerializer.Deserialize<List<UnidadeViewModel>>(jsonResponse);
             if (c != null)
             {
                 return c;
@@ -38,17 +36,17 @@ namespace FarmPlannerClient.Controller
             }
         }
 
-        public async Task<PrincipioAtivoViewModel> ListaById(int id)
+        public async Task<UnidadeViewModel> ListaById(int id)
         {
-            PrincipioAtivoViewModel reg = new PrincipioAtivoViewModel();
+            UnidadeViewModel reg = new UnidadeViewModel();
 
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            var response = await _httpClient.GetAsync("api/PrincipioAtivo/" + id.ToString());
+            var response = await _httpClient.GetAsync("api/Unidade/" + id.ToString());
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
-            var c = System.Text.Json.JsonSerializer.Deserialize<PrincipioAtivoViewModel>(jsonResponse);
+            var c = System.Text.Json.JsonSerializer.Deserialize<UnidadeViewModel>(jsonResponse);
             if (c != null)
             {
                 return c;
@@ -59,7 +57,7 @@ namespace FarmPlannerClient.Controller
             }
         }
 
-        public async Task<HttpResponseMessage> Salvar(int id, PrincipioAtivoViewModel dados)
+        public async Task<HttpResponseMessage> Salvar(int id, UnidadeViewModel dados)
         {
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
@@ -67,7 +65,7 @@ namespace FarmPlannerClient.Controller
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PutAsync("api/PrincipioAtivo/" + id.ToString(), content);
+            var response = await _httpClient.PutAsync("api/Unidade/" + id.ToString(), content);
             return response;
         }
 
@@ -79,11 +77,11 @@ namespace FarmPlannerClient.Controller
             //var json = System.Text.Json.JsonSerializer.Serialize(dados);
             //var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.DeleteAsync("api/PrincipioAtivo/" + id.ToString());
+            var response = await _httpClient.DeleteAsync("api/Unidade/" + id.ToString());
             return response;
         }
 
-        public async Task<HttpResponseMessage> Adicionar(PrincipioAtivoViewModel dados)
+        public async Task<HttpResponseMessage> Adicionar(UnidadeViewModel dados)
         {
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
@@ -91,7 +89,7 @@ namespace FarmPlannerClient.Controller
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("api/PrincipioAtivo", content);
+            var response = await _httpClient.PostAsync("api/Unidade", content);
             return response;
         }
     }

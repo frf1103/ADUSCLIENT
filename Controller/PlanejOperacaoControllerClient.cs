@@ -24,7 +24,7 @@ namespace FarmPlannerClient.Controller
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-            string x = "api/planejamentooperacao/listar/" + idorganizacao.ToString() + "/" + idfazenda.ToString() + "/" + idano.ToString() + "/" + idsafra.ToString() + "/" + idtalhao.ToString() + "/" + idoperacao.ToString() + "/" + idconta + "/" + idvariedade.ToString() + "/"  + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd");
+            string x = "api/planejamentooperacao/listar/" + idorganizacao.ToString() + "/" + idfazenda.ToString() + "/" + idano.ToString() + "/" + idsafra.ToString() + "/" + idtalhao.ToString() + "/" + idoperacao.ToString() + "/" + idconta + "/" + idvariedade.ToString() + "/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd");
             var response = await _httpClient.GetAsync(x);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -96,7 +96,7 @@ namespace FarmPlannerClient.Controller
             return response;
         }
 
-        public async Task<HttpResponseMessage> GravarAssistente(List<PlanejamentoOperacaoViewModel> dados)
+        public async Task<HttpResponseMessage> GravarAssistente(string idconta, string uid, List<AssistentePlanejOperViewModel> dados)
         {
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
@@ -104,13 +104,93 @@ namespace FarmPlannerClient.Controller
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("api/PlanejamentoOperacao/assistente", content);
+            var response = await _httpClient.PostAsync("api/PlanejamentoOperacao/assistente/" + idconta + "/" + uid, content);
             return response;
             /*         if (!(response.StatusCode.ToString() == "NotFound"))
                      {
                          return response;
                      }
                      else return null; */
+        }
+
+        public async Task<List<ListProdutoPlanejadoViewModel>> ListaProdPlanej(int idplanejamento, string idconta)
+        {
+            //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            string x = "api/ProdutoPlanejado/listar/" + idplanejamento.ToString() + "/" + idconta;
+            var response = await _httpClient.GetAsync(x);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var c = System.Text.Json.JsonSerializer.Deserialize<List<ListProdutoPlanejadoViewModel>>(jsonResponse);
+            if (c != null)
+            {
+                return c;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<ProdutoPlanejadoViewModel> ListaProdPlanejById(int id, string idconta)
+        {
+            //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            string x = "api/ProdutoPlanejado/" + id.ToString() + "/" + idconta;
+            var response = await _httpClient.GetAsync(x);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var c = System.Text.Json.JsonSerializer.Deserialize<ProdutoPlanejadoViewModel>(jsonResponse);
+            if (c != null)
+            {
+                return c;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<HttpResponseMessage> AdicionarProdutoPlanejado(ProdutoPlanejadoViewModel dados)
+        {
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var json = System.Text.Json.JsonSerializer.Serialize(dados);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync("api/ProdutoPlanejado", content);
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> SalvarProdutoPlanejado(int id, string idconta, ProdutoPlanejadoViewModel dados)
+        {
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var json = System.Text.Json.JsonSerializer.Serialize(dados);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync("api/ProdutoPlanejado/" + id.ToString() + "/" + idconta, content);
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> ExcluirProdutoPlanejado(int id, string idconta, string uid)
+        {
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            //var json = System.Text.Json.JsonSerializer.Serialize(dados);
+            //var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.DeleteAsync("api/ProdutoPlanejado/" + id.ToString() + "/" + idconta + "/" + uid);
+            return response;
         }
     }
 }

@@ -1,0 +1,12 @@
+C:\Users\user\source\repos\FarmPlannerClient\bin\Release\net7.0\FarmPlannerClient.deps.json
+C:\Users\user\source\repos\FarmPlannerClient\bin\Release\net7.0\FarmPlannerClient.dll
+C:\Users\user\source\repos\FarmPlannerClient\bin\Release\net7.0\FarmPlannerClient.pdb
+C:\Users\user\source\repos\FarmPlannerClient\obj\Release\net7.0\FarmPlannerClient.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\FarmPlannerClient\obj\Release\net7.0\FarmPlannerClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\FarmPlannerClient\obj\Release\net7.0\FarmPlannerClient.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\FarmPlannerClient\obj\Release\net7.0\FarmPlannerClient.AssemblyInfo.cs
+C:\Users\user\source\repos\FarmPlannerClient\obj\Release\net7.0\FarmPlannerClient.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\FarmPlannerClient\obj\Release\net7.0\FarmPlannerClient.dll
+C:\Users\user\source\repos\FarmPlannerClient\obj\Release\net7.0\refint\FarmPlannerClient.dll
+C:\Users\user\source\repos\FarmPlannerClient\obj\Release\net7.0\FarmPlannerClient.pdb
+C:\Users\user\source\repos\FarmPlannerClient\obj\Release\net7.0\ref\FarmPlannerClient.dll

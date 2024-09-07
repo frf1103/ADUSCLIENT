@@ -15,10 +15,10 @@ namespace FarmPlannerClient.Maquina
         [DisplayName("Operação")]
         public int idOperacao { get; set; }
 
-        [DisplayName("Rendimento")]
+        [DisplayName("Rendimento(ha/h)")]
         public decimal rendimento { get; set; }
 
-        [DisplayName("Consumo")]
+        [DisplayName("Consumo(l/h)")]
         public decimal consumo { get; set; }
 
         public string idconta { get; set; }

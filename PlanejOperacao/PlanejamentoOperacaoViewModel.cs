@@ -1,26 +1,47 @@
-﻿namespace FarmPlannerClient.PlanejOperacao
+﻿using PagSeguro.DotNet.Sdk.Common.Helpers;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace FarmPlannerClient.PlanejOperacao
 {
     public class PlanejamentoOperacaoViewModel
     {
+        [DisplayName("ID")]
         public int id { get; set; }
+
+        [DisplayName("Área Configurada")]
         public int idConfigArea { get; set; }
+
+        [DisplayName("Data Prevista")]
         public DateTime dataPrevista { get; set; }
+
+        [DisplayName("Operação")]
         public int idOperacao { get; set; }
 
+        [DisplayName("Plantio?")]
         public bool plantio { get; set; }
-        public int dAE { get; set; }
+
+        [DisplayName("DAE")]
+        public int dae { get; set; }
 
         //    public int IdOrcamento { get; set; }
 
+        [DisplayName("Area")]
+        //[RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "O campo Área deve ser um número válido.")]
         public decimal area { get; set; }
 
+        [DisplayName("Qtd Horas Estimadas")]
         public decimal qHorasEstimadas { get; set; }
 
+        [DisplayName("Combustivel Gasto")]
         public decimal qCombustivelEstimado { get; set; }
 
+        [DisplayName("Status")]
         public int status { get; set; }
 
+        [DisplayName("Custo da Operação")]
         public decimal custoOperacao { get; set; }
+
         public string idconta { get; set; }
 
         public string? uid { get; set; }

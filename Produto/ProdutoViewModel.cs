@@ -19,9 +19,11 @@ namespace FarmPlannerClient.Produto
         public int idPrincipioAtivo { get; set; }
 
         [DisplayName("UND Básica")]
-        public int unidadeBasica { get; set; }
+        public int idunidade { get; set; }
 
         [DisplayName("ID")]
         public int id { get; set; }
+
+        public string? uid { get; set; }
     }
 }
