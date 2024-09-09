@@ -15,7 +15,8 @@ namespace FarmPlannerClient.PlanejOperacao
         public decimal area { get; set; }
         public DateTime dataprevista { get; set; }
 
-        public ICollection<ProdutosAssistenteViewModel> produtos { get; set; }
+        public ICollection<ProdutosAssistenteViewModel>? produtos { get; set; }
+        public ICollection<ProdutosAssistenteViewModel>? maquinas { get; set; }
     }
 
     public class ProdutosAssistenteViewModel
@@ -25,5 +26,11 @@ namespace FarmPlannerClient.PlanejOperacao
         public decimal dosagem { get; set; }
         public decimal tamanho { get; set; }
         public decimal percent { get; set; }
+    }
+
+    public class MaquinasAssistenteViewModel
+    {
+        public int idmaquina { get; set; }
+        public int idmodelo { get; set; }
     }
 }
