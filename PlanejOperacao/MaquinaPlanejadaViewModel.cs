@@ -1,19 +1,26 @@
-﻿namespace FarmPlannerClient.PlanejOperacao
+﻿using System.ComponentModel;
+
+namespace FarmPlannerClient.PlanejOperacao
 {
     public class MaquinaPlanejadaViewModel
     {
         public string idconta { get; set; }
-        public int Id { get; set; }
-        public int IdPlanejamento { get; set; }
-        public int IdModeloMaquina { get; set; }
-        public int IdMaquina { get; set; }
+        [DisplayName("ID")]
+        public int id { get; set; }
+        public int idPlanejamento { get; set; }
+        [DisplayName("Modelo")]
+        public int idModeloMaquina { get; set; }
+        [DisplayName("Máquina")]
+        public int? idMaquina { get; set; }
 
-        public decimal Rendimento { get; set; }
-
-        public decimal Consumo { get; set; }
-
-        public decimal QtdHoraEstimada { get; set; }
-
-        public decimal QtdCombEstimado { get; set; }
+        [DisplayName("Rendimento")]
+        public decimal rendimento { get; set; }
+        [DisplayName("Consumo")]
+        public decimal consumo { get; set; }
+        [DisplayName("Hor Estimada")]
+        public decimal qtdHoraEstimada { get; set; }
+        [DisplayName("Comb Estimado")]
+        public decimal qtdCombEstimado { get; set; }
+        public string? uid { get; set; }
     }
 }

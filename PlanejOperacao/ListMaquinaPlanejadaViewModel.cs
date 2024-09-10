@@ -2,15 +2,15 @@
 {
     public class ListMaquinaPlanejadaViewModel
     {
-        public int Id { get; set; }
-        public int IdPlanejamento { get; set; }
-        public int IdModeloMaquina { get; set; }
-        public int IdMaquina { get; set; }
-        public decimal Rendimento { get; set; }
-        public decimal Consumo { get; set; }
-        public decimal QtdHoraEstimada { get; set; }
-        public decimal QtdCombEstimado { get; set; }
-        public string DescModelo { get; set; }
-        public string DescMaquina { get; set; }
+        public int id { get; set; }
+        public int idPlanejamento { get; set; }
+        public int idModeloMaquina { get; set; }
+        public int? idMaquina { get; set; }
+        public decimal rendimento { get; set; }
+        public decimal consumo { get; set; }
+        public decimal qtdHoraEstimada { get; set; }
+        public decimal qtdCombEstimado { get; set; }
+        public string descModelo { get; set; }
+        public string? descMaquina { get; set; }
     }
 }

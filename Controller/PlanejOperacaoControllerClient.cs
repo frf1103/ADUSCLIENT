@@ -192,5 +192,109 @@ namespace FarmPlannerClient.Controller
             var response = await _httpClient.DeleteAsync("api/ProdutoPlanejado/" + id.ToString() + "/" + idconta + "/" + uid);
             return response;
         }
+
+        public async Task<List<ListMaquinaPlanejadaViewModel>> ListaMaquinaPlanej(int idplanejamento, string idconta)
+        {
+            //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            string x = "api/MaquinaPlanejada/listar/" + idplanejamento.ToString() + "/" + idconta;
+            var response = await _httpClient.GetAsync(x);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var c = System.Text.Json.JsonSerializer.Deserialize<List<ListMaquinaPlanejadaViewModel>>(jsonResponse);
+            if (c != null)
+            {
+                return c;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<MaquinaPlanejadaViewModel> ListaMaquinaPlanejById(int id, string idconta)
+        {
+            //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            string x = "api/MaquinaPlanejada/" + id.ToString() + "/" + idconta;
+            var response = await _httpClient.GetAsync(x);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var c = System.Text.Json.JsonSerializer.Deserialize<MaquinaPlanejadaViewModel>(jsonResponse);
+            if (c != null)
+            {
+                return c;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<HttpResponseMessage> AdicionarMaquinaPlanejada(MaquinaPlanejadaViewModel dados)
+        {
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var json = System.Text.Json.JsonSerializer.Serialize(dados);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync("api/MaquinaPlanejada", content);
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> SalvarMaquinaPlanejada(int id, string idconta, MaquinaPlanejadaViewModel dados)
+        {
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var json = System.Text.Json.JsonSerializer.Serialize(dados);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync("api/MaquinaPlanejada/" + id.ToString() + "/" + idconta, content);
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> ExcluirMaquinaPlanejada(int id, string idconta, string uid)
+        {
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            //var json = System.Text.Json.JsonSerializer.Serialize(dados);
+            //var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.DeleteAsync("api/MaquinaPlanejada/" + id.ToString() + "/" + idconta + "/" + uid);
+            return response;
+        }
+
+
+        public async Task<parametrooperacaoviewmodel> BuscaParametroOperacao(string idconta,int idmodelo,int idmaquina,int idconfigarea,int idoperacao,int idcultura)
+        {
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            //var json = System.Text.Json.JsonSerializer.Serialize(dados);
+            //var content = new StringContent(json, Encoding.UTF8, "application/json");
+            string xx = "api/planejamentooperacao/parametrooperacao/" + idconta + "/" + idmodelo.ToString() + "/" + idmaquina.ToString() + "/" + idoperacao.ToString() + "/" + idconfigarea.ToString() + "/" + idcultura.ToString();
+            var response = await _httpClient.GetAsync(xx);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var c = System.Text.Json.JsonSerializer.Deserialize<parametrooperacaoviewmodel>(jsonResponse);
+            if (c != null)
+            {
+                return c;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
     }
 }

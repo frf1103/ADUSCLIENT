@@ -27,7 +27,6 @@ namespace FarmPlannerClient.PlanejOperacao
         //    public int IdOrcamento { get; set; }
 
         [DisplayName("Area")]
-        //[RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "O campo Área deve ser um número válido.")]
         public decimal area { get; set; }
 
         [DisplayName("Qtd Horas Estimadas")]
@@ -47,5 +46,8 @@ namespace FarmPlannerClient.PlanejOperacao
         public string? uid { get; set; }
         public DateTime? datains { get; set; }
         public DateTime? dataup { get; set; }
+
+        [DisplayName("Percentual")]
+        public decimal? percentual { get; set; }
     }
 }
