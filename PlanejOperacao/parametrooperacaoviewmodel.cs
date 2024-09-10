@@ -8,7 +8,7 @@ namespace FarmPlannerClient.PlanejOperacao
 {
     public class parametrooperacaoviewmodel
     {
-        decimal rendimento { get; set; }
-        decimal consumo { get; set; }
+        public decimal rendimento { get; set; }
+        public decimal consumo { get; set; }
     }
 }

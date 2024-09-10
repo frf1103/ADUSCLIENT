@@ -17,14 +17,14 @@ namespace FarmPlannerClient.Controller
             _httpClient = httpClient;
         }
 
-        public async Task<List<ListPlanejamentoOperacaoViewModel>> Lista(int idorganizacao, int idano, int idfazenda, int idtalhao, int idvariedade, int idsafra, string idconta, int idoperacao, DateTime ini, DateTime fim)
+        public async Task<List<ListPlanejamentoOperacaoViewModel>> Lista(int idorganizacao, int idano, int idfazenda, int idtalhao, int idvariedade, int idsafra, string idconta, int idoperacao, DateTime ini, DateTime fim, int idprincipio, int idproduto)
         {
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-            string x = "api/planejamentooperacao/listar/" + idorganizacao.ToString() + "/" + idfazenda.ToString() + "/" + idano.ToString() + "/" + idsafra.ToString() + "/" + idtalhao.ToString() + "/" + idoperacao.ToString() + "/" + idconta + "/" + idvariedade.ToString() + "/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd");
+            string x = "api/planejamentooperacao/listar/" + idorganizacao.ToString() + "/" + idfazenda.ToString() + "/" + idano.ToString() + "/" + idsafra.ToString() + "/" + idtalhao.ToString() + "/" + idoperacao.ToString() + "/" + idconta + "/" + idvariedade.ToString() + "/" + idprincipio.ToString() + "/" + idproduto.ToString() + "/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd");
             var response = await _httpClient.GetAsync(x);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -273,8 +273,7 @@ namespace FarmPlannerClient.Controller
             return response;
         }
 
-
-        public async Task<parametrooperacaoviewmodel> BuscaParametroOperacao(string idconta,int idmodelo,int idmaquina,int idconfigarea,int idoperacao,int idcultura)
+        public async Task<parametrooperacaoviewmodel> BuscaParametroOperacao(string idconta, int idmodelo, int idmaquina, int idconfigarea, int idoperacao, int idcultura)
         {
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
@@ -293,8 +292,6 @@ namespace FarmPlannerClient.Controller
             {
                 return null;
             }
-
         }
-
     }
 }
