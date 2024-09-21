@@ -6,6 +6,8 @@
         Defensivos,
         Sementes,
         Biologicos,
-        Corretivos
+        Corretivos,
+        Combustiveis,
+        Outros
     }
 }

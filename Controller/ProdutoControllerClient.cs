@@ -13,7 +13,7 @@ namespace FarmPlannerClient.Controller
             _httpClient = httpClient;
         }
 
-        public async Task<List<ListProdutoViewModel>> Lista(int idgrupo, int idprincipio, int idfab, string idconta, string? filtro)
+        public async Task<List<ListProdutoViewModel>> Lista(int idgrupo, int idprincipio, int idfab, string idconta, string? filtro, int tipo)
         {
             ProdutoViewModel reg = new ProdutoViewModel();
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
@@ -21,7 +21,7 @@ namespace FarmPlannerClient.Controller
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
             string x = "api/Produto/listar/" + idgrupo.ToString() + "/" + idfab.ToString() + "/" +
-                idprincipio.ToString() + "/" + idconta + "?filtro=" + filtro;
+                idprincipio.ToString() + "/" + idconta + "/" + tipo + "?filtro=" + filtro;
             var response = await _httpClient.GetAsync(x);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 

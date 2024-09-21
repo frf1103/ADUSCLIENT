@@ -17,5 +17,7 @@ namespace FarmPlannerClient.Produto
         public string descprincipio { get; set; }
         public string descfab { get; set; }
         public string descgrupo { get; set; }
+
+        public string? tipo { get; set; }
     }
 }

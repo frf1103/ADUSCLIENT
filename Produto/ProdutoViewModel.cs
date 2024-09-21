@@ -25,5 +25,6 @@ namespace FarmPlannerClient.Produto
         public int id { get; set; }
 
         public string? uid { get; set; }
+        public int? tipo { get; set; }
     }
 }
