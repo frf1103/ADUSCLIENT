@@ -167,7 +167,7 @@ namespace FarmPlannerClient.Controller
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("api/OrcamentoProduto", content);
+            var response = await _httpClient.PostAsync("api/ProdutoOrcamento", content);
             return response;
         }
     }

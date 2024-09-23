@@ -14,5 +14,6 @@
         public string descproduto { get; set; }
         public string descprincativo { get; set; }
         public string desctipoproduto { get; set; }
+        public string descmoeda { get; set; }
     }
 }
