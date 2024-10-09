@@ -17,7 +17,7 @@ namespace FarmPlannerClient.Controller
             _httpClient = httpClient;
         }
 
-        public async Task<List<ListPlanejamentoCompraViewModel>> Lista(int idorganizacao, string idconta, int idano, int idprincipio, int idfazenda, int idsafra)
+        public async Task<List<ListPlanejamentoCompraViewModel>> Lista(int idorganizacao, string idconta, int idano, int idprincipio, int idfazenda, int idsafra, int idproduto)
         {
             //{ idconta}/{ idano},{ idorganizacao}/{ idsafra}/{ idproduto}/{ idfazenda}
             PlanejamentoCompraViewModel reg = new PlanejamentoCompraViewModel();
@@ -25,7 +25,7 @@ namespace FarmPlannerClient.Controller
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            string x = "api/PlanejamentoCompra/listar/" + idconta + "/" + idano.ToString() + "/" + idorganizacao.ToString() + "/" + idsafra.ToString() + "/" + idprincipio.ToString() + "/" + idfazenda.ToString();
+            string x = "api/PlanejamentoCompra/listar/" + idconta + "/" + idano.ToString() + "/" + idorganizacao.ToString() + "/" + idsafra.ToString() + "/" + idprincipio.ToString() + "/" + idfazenda.ToString() + "/" + idproduto.ToString();
             var response = await _httpClient.GetAsync(x);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 

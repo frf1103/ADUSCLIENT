@@ -9,10 +9,13 @@ namespace FarmPlannerClient.PlanejamentoCompra
 
         [DisplayName("Fazenda")]
         public int idFazenda { get; set; }
+
         [DisplayName("Safra")]
         public int idSafra { get; set; }
-        [DisplayName("Princípio Ativo")]
-        public int idPrincipio { get; set; }
+
+        [DisplayName("Produto")]
+        public int idproduto { get; set; }
+
         [DisplayName("Necessidade")]
         public decimal qtdNecessaria { get; set; }
 

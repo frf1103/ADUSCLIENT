@@ -13,9 +13,9 @@ namespace FarmPlannerClient.PlanejOperacao
         [DisplayName("Máquina")]
         public int? idMaquina { get; set; }
 
-        [DisplayName("Rendimento")]
+        [DisplayName("Rendimento(ha/h)")]
         public decimal rendimento { get; set; }
-        [DisplayName("Consumo")]
+        [DisplayName("Consumo(lt/h)")]
         public decimal consumo { get; set; }
         [DisplayName("Hor Estimada")]
         public decimal qtdHoraEstimada { get; set; }

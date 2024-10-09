@@ -16,9 +16,6 @@ namespace FarmPlannerClient.PlanejOperacao
 
         public int idPlanejamento { get; set; }
 
-        [DisplayName("Princípio Ativo")]
-        public int? idPrincipioAtivo { get; set; }
-
         [DisplayName("Produto")]
         public int? idProduto { get; set; }
 

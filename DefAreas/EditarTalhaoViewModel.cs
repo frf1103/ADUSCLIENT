@@ -12,7 +12,7 @@ namespace FarmPlannerClient.DefAreas
         [MaxLength(20)]
         public string descricao { get; set; }
 
-        [DisplayName("Área Produtiva")]
+        [DisplayName("Área Produtiva(ha)")]
         public decimal areaProdutiva { get; set; }
 
         [DisplayName("Tipo de Área")]

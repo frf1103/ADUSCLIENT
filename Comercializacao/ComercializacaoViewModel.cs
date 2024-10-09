@@ -1,35 +1,64 @@
-﻿namespace FarmPlannerClient.Comercializacao
+﻿using System.ComponentModel;
+
+namespace FarmPlannerClient.Comercializacao
 {
     public class ComercializacaoViewModel
     {
-        public int Id { get; set; }
+        public int id { get; set; }
 
-        public int IdSafra { get; set; }
-        public int IdParceiro { get; set; }
-        public int IdFazenda { get; set; }
-        public decimal Quantidade { get; set; }
+        [DisplayName("Safra")]
+        public int idSafra { get; set; }
 
-        public int IdMoeda { get; set; }
-        public bool Trava { get; set; }
+        [DisplayName("Parceiro")]
+        public int idParceiro { get; set; }
 
-        public decimal CBOT { get; set; }
+        [DisplayName("Fazenda")]
+        public int idFazenda { get; set; }
 
-        public decimal Cambio { get; set; }
+        [DisplayName("Quantidade")]
+        public decimal quantidade { get; set; }
 
-        public decimal Premio { get; set; }
+        [DisplayName("Moeda")]
+        public int idMoeda { get; set; }
 
-        public decimal ValorUnitario { get; set; }
+        [DisplayName("Trava")]
+        public bool trava { get; set; }
 
-        public decimal ValorTotal { get; set; }
+        [DisplayName("CBOT")]
+        public decimal cbot { get; set; }
 
-        public DateTime DataEntrega { get; set; }
-        public DateTime DataPagamento { get; set; }
+        [DisplayName("Câmbio")]
+        public decimal cambio { get; set; }
 
-        public decimal Descontos { get; set; }
+        [DisplayName("Prêmio")]
+        public decimal premio { get; set; }
 
-        public decimal ValorLiquido { get; set; }
+        public decimal valorUnitario { get; set; }
 
-        public string? NumeroContrato { get; set; }
+        [DisplayName("Valor Unitário")]
+        public decimal valorTotal { get; set; }
+
+        [DisplayName("Data Entrega")]
+        public DateTime dataEntrega { get; set; }
+
+        [DisplayName("Data Pagamento")]
+        public DateTime dataPagamento { get; set; }
+
+        [DisplayName("Descontos")]
+        public decimal descontos { get; set; }
+
+        [DisplayName("Vl Líquido")]
+        public decimal valorLiquido { get; set; }
+
+        [DisplayName("Contrato")]
+        public string? numeroContrato { get; set; }
+
+        [DisplayName("Data do Pedido")]
+        public DateTime? dataPedido { get; set; }
+
+        [DisplayName("Frete")]
+        public decimal? frete { get; set; }
+
         public string idconta { get; set; }
         public string? uid { get; set; }
         public DateTime? datains { get; set; }

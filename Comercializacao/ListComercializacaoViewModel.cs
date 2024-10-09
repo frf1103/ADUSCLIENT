@@ -1,4 +1,6 @@
-﻿namespace FarmPlannerClient.Comercializacao
+﻿using System.ComponentModel;
+
+namespace FarmPlannerClient.Comercializacao
 {
     public class ListComercializacaoViewModel
     {
@@ -34,5 +36,9 @@
         public string nomeparceiro { get; set; }
         public string descfazenda { get; set; }
         public string? numeroContrato { get; set; }
+
+        public DateTime? DataPedido { get; set; }
+
+        public decimal? Frete { get; set; }
     }
 }

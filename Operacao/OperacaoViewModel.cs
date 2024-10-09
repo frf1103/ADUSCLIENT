@@ -19,12 +19,13 @@ namespace FarmPlannerClient.Operacao
         [DisplayName("Código Externo")]
         public string? codigoExterno { get; set; }
 
-        [DisplayName("Rendimento Padrão")]
+        [DisplayName("Rendimento Padrão(ha/h)")]
         public decimal? rendimento { get; set; }
 
-        [DisplayName("Consumo Padrão")]
+        [DisplayName("Consumo Padrão(l/h)")]
         public decimal? consumo { get; set; }
 
         public string idconta { get; set; }
+        public bool? plantio { get; set; }
     }
 }

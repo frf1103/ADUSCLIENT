@@ -32,7 +32,7 @@ namespace FarmPlannerClient.PlanejOperacao
         [DisplayName("Qtd Horas Estimadas")]
         public decimal qHorasEstimadas { get; set; }
 
-        [DisplayName("Combustivel Gasto")]
+        [DisplayName("Combustivel Gasto(lt)")]
         public decimal qCombustivelEstimado { get; set; }
 
         [DisplayName("Status")]

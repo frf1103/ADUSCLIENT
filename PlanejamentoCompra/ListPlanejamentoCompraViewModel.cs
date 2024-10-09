@@ -6,7 +6,7 @@
         public int idSafra { get; set; }
 
         public int idFazenda { get; set; }
-        public int idPrincipio { get; set; }
+        public int idproduto { get; set; }
 
         public decimal qtdNecessaria { get; set; }
 

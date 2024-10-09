@@ -16,5 +16,8 @@ namespace FarmPlannerClient.TipoOperacao
         [DisplayName("Descrição")]
         [Required(ErrorMessage = "O campo Nome é obrigatório.")]
         public string descricao { get; set; }
+
+        [DisplayName("Plantio?")]
+        public bool plantio { get; set; } = false;
     }
 }
