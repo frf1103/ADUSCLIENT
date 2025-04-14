@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FarmPlannerClient.Localidade
+namespace ADUSClient.Localidade
 {
     public class MunicipioViewModel
     {

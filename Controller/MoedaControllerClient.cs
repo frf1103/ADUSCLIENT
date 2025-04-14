@@ -1,4 +1,4 @@
-﻿using FarmPlannerClient.Moeda;
+﻿using ADUSClient.Moeda;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FarmPlannerClient.Controller
+namespace ADUSClient.Controller
 {
     public class MoedaControllerClient
     {

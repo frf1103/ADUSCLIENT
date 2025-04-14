@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FarmPlannerClient.Moeda
+namespace ADUSClient.Moeda
 {
     public class MoedaViewModel
     {

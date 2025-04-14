@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RQIlL+giDu/Qll8rGz5Yv972DXbbLHWsgbp4IXOTShKOoToH+qK6KdhngiV0Ul5GtWslM/aQcyxG09nT8FJKkw==",
+  "dgSpecHash": "3fB3lQYXL0zAAKsqaelqHNX/g5PHNClCqBeN4164whSsvO4i4NaDeV1OB8Tl3HDLQ2KuOXfjacJX9OE9tPbW+w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\source\\repos\\FarmPlannerClient\\FarmPlannerClient.csproj",
+  "projectFilePath": "C:\\Users\\user\\source\\repos\\ADUS\\ADUSClient\\ADUSClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

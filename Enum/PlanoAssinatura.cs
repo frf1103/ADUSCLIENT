@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FarmPlannerClient.Enum
+namespace ADUSClient.Enum
 {
     public enum PlanoAssinatura
     {

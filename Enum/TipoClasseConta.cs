@@ -1,4 +1,4 @@
-﻿namespace FarmPlannerClient.Enum
+﻿namespace ADUSClient.Enum
 {
     public enum TipoClasseConta
     {

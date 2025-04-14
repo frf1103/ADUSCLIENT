@@ -5591,11 +5591,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\source\\repos\\FarmPlannerClient\\FarmPlannerClient.csproj",
-      "projectName": "FarmPlannerClient",
-      "projectPath": "C:\\Users\\user\\source\\repos\\FarmPlannerClient\\FarmPlannerClient.csproj",
+      "projectUniqueName": "C:\\Users\\user\\source\\repos\\ADUS\\ADUSClient\\ADUSClient.csproj",
+      "projectName": "ADUSClient",
+      "projectPath": "C:\\Users\\user\\source\\repos\\ADUS\\ADUSClient\\ADUSClient.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\source\\repos\\FarmPlannerClient\\obj\\",
+      "outputPath": "C:\\Users\\user\\source\\repos\\ADUS\\ADUSClient\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",

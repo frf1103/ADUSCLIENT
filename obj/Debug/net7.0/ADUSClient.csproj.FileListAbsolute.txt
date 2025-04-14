@@ -1,0 +1,12 @@
+C:\Users\user\source\repos\ADUS\ADUSClient\bin\Debug\net7.0\ADUSClient.deps.json
+C:\Users\user\source\repos\ADUS\ADUSClient\bin\Debug\net7.0\ADUSClient.dll
+C:\Users\user\source\repos\ADUS\ADUSClient\bin\Debug\net7.0\ADUSClient.pdb
+C:\Users\user\source\repos\ADUS\ADUSClient\obj\Debug\net7.0\ADUSClient.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\ADUS\ADUSClient\obj\Debug\net7.0\ADUSClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\ADUS\ADUSClient\obj\Debug\net7.0\ADUSClient.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\ADUS\ADUSClient\obj\Debug\net7.0\ADUSClient.AssemblyInfo.cs
+C:\Users\user\source\repos\ADUS\ADUSClient\obj\Debug\net7.0\ADUSClient.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\ADUS\ADUSClient\obj\Debug\net7.0\ADUSClient.dll
+C:\Users\user\source\repos\ADUS\ADUSClient\obj\Debug\net7.0\refint\ADUSClient.dll
+C:\Users\user\source\repos\ADUS\ADUSClient\obj\Debug\net7.0\ADUSClient.pdb
+C:\Users\user\source\repos\ADUS\ADUSClient\obj\Debug\net7.0\ref\ADUSClient.dll

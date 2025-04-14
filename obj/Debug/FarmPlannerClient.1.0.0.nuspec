@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
-    <id>FarmPlannerClient</id>
+    <id>ADUSClient</id>
     <version>1.0.0</version>
-    <authors>FarmPlannerClient</authors>
+    <authors>ADUSClient</authors>
     <description>Package Description</description>
     <dependencies>
       <group targetFramework="net6.0">
-        <dependency id="FarmPlannerAPI" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="ADUSAPI" version="1.0.0" exclude="Build,Analyzers" />
         <dependency id="System.Net.Http.Json" version="8.0.0" exclude="Build,Analyzers" />
         <dependency id="System.Text.Json" version="8.0.4" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="C:\Users\user\source\repos\FarmPlannerClient\bin\Debug\net6.0\FarmPlannerClient.dll" target="lib\net6.0\FarmPlannerClient.dll" />
+    <file src="C:\Users\user\source\repos\ADUSClient\bin\Debug\net6.0\ADUSClient.dll" target="lib\net6.0\ADUSClient.dll" />
   </files>
 </package>

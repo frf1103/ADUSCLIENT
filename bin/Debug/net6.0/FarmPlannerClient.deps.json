@@ -6,13 +6,13 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "FarmPlannerClient/1.0.0": {
+      "ADUSClient/1.0.0": {
         "dependencies": {
           "System.Net.Http.Json": "8.0.0",
           "System.Text.Json": "8.0.4"
         },
         "runtime": {
-          "FarmPlannerClient.dll": {}
+          "ADUSClient.dll": {}
         }
       },
       "System.Net.Http.Json/8.0.0": {
@@ -61,7 +61,7 @@
     }
   },
   "libraries": {
-    "FarmPlannerClient/1.0.0": {
+    "ADUSClient/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -6,14 +6,14 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "FarmPlannerClient/1.0.0": {
+      "ADUSClient/1.0.0": {
         "dependencies": {
-          "FarmPlannerAPI": "1.0.0",
+          "ADUSAPI": "1.0.0",
           "System.Net.Http.Json": "8.0.0",
           "System.Text.Json": "8.0.4"
         },
         "runtime": {
-          "FarmPlannerClient.dll": {}
+          "ADUSClient.dll": {}
         }
       },
       "Azure.Core/1.24.0": {
@@ -770,7 +770,7 @@
           }
         }
       },
-      "FarmPlannerAPI/1.0.0": {
+      "ADUSAPI/1.0.0": {
         "dependencies": {
           "FBSLIb": "1.0.0",
           "FluentValidation.AspNetCore": "11.3.0",
@@ -779,7 +779,7 @@
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
-          "FarmPlannerAPI.dll": {}
+          "ADUSAPI.dll": {}
         }
       },
       "FBSLIb/1.0.0": {
@@ -790,7 +790,7 @@
     }
   },
   "libraries": {
-    "FarmPlannerClient/1.0.0": {
+    "ADUSClient/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1341,7 +1341,7 @@
       "path": "system.windows.extensions/5.0.0",
       "hashPath": "system.windows.extensions.5.0.0.nupkg.sha512"
     },
-    "FarmPlannerAPI/1.0.0": {
+    "ADUSAPI/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

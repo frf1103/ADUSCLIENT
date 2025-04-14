@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FarmPlannerClient.Enum
+namespace ADUSClient.Enum
 {
     public enum Combustivel
     {
