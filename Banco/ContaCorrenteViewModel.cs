@@ -5,7 +5,7 @@ namespace ADUSClient.Banco
     public class ContaCorrenteViewModel
     {
         [DisplayName("ID")]
-        public string id { get; set; } = string.Empty;
+        public string? id { get; set; } = string.Empty;
 
         [DisplayName("Descrição")]
         public string descricao { get; set; } = string.Empty;
@@ -20,5 +20,7 @@ namespace ADUSClient.Banco
         public string titular { get; set; } = string.Empty;
 
         public int bancoId { get; set; }
+
+        public string nomebanco { get; set; }
     }
 }

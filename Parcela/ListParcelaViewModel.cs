@@ -38,5 +38,6 @@ namespace ADUSClient.Parcela
         public string nomeparceiro { get; set; }
 
         public string descforma { get; set; }
+        public string status { get; set; }
     }
 }
