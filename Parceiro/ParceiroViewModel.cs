@@ -51,11 +51,11 @@ namespace ADUSClient.Parceiro
 
         [Required(ErrorMessage = "O campo é obrigatório.")]
         [DisplayName("UF")]
-        public int uf { get; set; }
+        public int iduf { get; set; }
 
         [Required(ErrorMessage = "O campo é obrigatório.")]
         [DisplayName("Cidade")]
-        public int cidade { get; set; }
+        public int idcidade { get; set; }
 
         [Required(ErrorMessage = "O campo é obrigatório.")]
         [DisplayName("Profissão")]

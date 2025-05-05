@@ -1,4 +1,5 @@
 ﻿using ADUSClient.MovimentoCaixa;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
@@ -20,28 +21,31 @@ namespace ADUSClient.Controller
             int? idtransacao = null,
             int? idcentrocusto = null,
             string? idparceiro = null,
-            int? idcontacorrente = null,
+            string? idcontacorrente = null,
             int? idcategoria = null,
-            string? filtro = null)
+            string? filtro = null,
+            string? idmovbanco = null)
         {
             var query = new Dictionary<string, string>();
 
             if (ini.HasValue)
-                query.Add("ini", ini.Value.ToString("yyyy-MM-dd"));
+                query.Add("dataInicio", ini.Value.ToString("yyyy-MM-dd"));
             if (fim.HasValue)
-                query.Add("fim", fim.Value.ToString("yyyy-MM-dd"));
+                query.Add("dataFim", fim.Value.ToString("yyyy-MM-dd"));
             if (idtransacao.HasValue)
                 query.Add("idtransacao", idtransacao.Value.ToString());
             if (idcentrocusto.HasValue)
                 query.Add("idcentrocusto", idcentrocusto.Value.ToString());
             if (!string.IsNullOrEmpty(idparceiro))
                 query.Add("idparceiro", idparceiro);
-            if (idcontacorrente.HasValue)
-                query.Add("idcontacorrente", idcontacorrente.Value.ToString());
+            if (!string.IsNullOrEmpty(idcontacorrente))
+                query.Add("idContaCorrente", idcontacorrente);
             if (idcategoria.HasValue)
                 query.Add("idcategoria", idcategoria.Value.ToString());
             if (!string.IsNullOrEmpty(filtro))
-                query.Add("filtro", filtro);
+                query.Add("descricao", filtro);
+            if (!string.IsNullOrEmpty(idmovbanco))
+                query.Add("idmovbanco", idmovbanco);
 
             var queryString = string.Join("&", query.Select(kv => $"{kv.Key}={Uri.EscapeDataString(kv.Value)}"));
 
@@ -52,6 +56,22 @@ namespace ADUSClient.Controller
             {
                 PropertyNameCaseInsensitive = true
             }) ?? new List<MovimentoCaixaViewModel>();
+        }
+
+        public async Task<List<ExtratoConta>> Extrato(
+         DateTime ini,
+         DateTime fim,
+         string? idcontacorrente = null)
+        {
+            string url = "api/MovimentoCaixa/extrato/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd") + "/" + idcontacorrente;
+
+            var response = await _httpClient.GetAsync(url);
+            var content = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<List<ExtratoConta>>(content, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            }) ?? new List<ExtratoConta>();
         }
 
         public async Task<MovimentoCaixaViewModel?> ObterPorIdAsync(int id)

@@ -22,10 +22,10 @@ namespace ADUSClient.Parceiro
 
         public string numero { get; set; }
         public string bairro { get; set; }
-        public int UF { get; set; }
+        public int idUF { get; set; }
         public string complemento { get; set; }
 
-        public int cidade { get; set; }
+        public int idcidade { get; set; }
         public string? profissao { get; set; }
         public int estadoCivil { get; set; }
         public string? idRepresentante { get; set; }

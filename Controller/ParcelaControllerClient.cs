@@ -63,6 +63,30 @@ namespace ADUSClient.Controller
             else return null;
         }
 
+        public async Task<ParcelaViewModel> ListaByAssinatura(string idassinatura, int parcela)
+        {
+            ParcelaViewModel reg = new ParcelaViewModel();
+
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var response = await _httpClient.GetAsync("api/Parcela/byAssinatura?id=" + idassinatura.ToString() + "&parcela=" + parcela.ToString());
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            if (jsonResponse != "")
+            {
+                var c = System.Text.Json.JsonSerializer.Deserialize<ParcelaViewModel>(jsonResponse);
+                if (c != null)
+                {
+                    return c;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else return null;
+        }
+
         public async Task<ParcelaViewModel> ListaByIdCheckout(string id)
         {
             ParcelaViewModel reg = new ParcelaViewModel();
@@ -121,6 +145,31 @@ namespace ADUSClient.Controller
 
             var response = await _httpClient.PostAsync("api/Parcela", content);
             return response;
+        }
+
+        public async Task<List<visaogeralviewmodel>> VisaoGeral(string idparceiro, string ini, string fim)
+        {
+            ParcelaViewModel reg = new ParcelaViewModel();
+
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            string x = "api/Parcela/visaogeral/" + idparceiro + "/" + ini + "/" + fim;
+            var response = await _httpClient.GetAsync(x);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            if (jsonResponse != "")
+            {
+                var c = System.Text.Json.JsonSerializer.Deserialize<List<visaogeralviewmodel>>(jsonResponse);
+                if (c != null)
+                {
+                    return c;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else return null;
         }
     }
 }

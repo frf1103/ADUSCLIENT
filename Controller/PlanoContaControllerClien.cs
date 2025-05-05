@@ -25,11 +25,25 @@ namespace ADUSClient.Controller
 
             var response = await _httpClient.GetAsync("api/PlanoConta?filtro=" + filtro);
             var json = await response.Content.ReadAsStringAsync();
-
+            /*
             return JsonSerializer.Deserialize<List<PlanoContaViewModel>>(json, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
-            });
+            });*/
+
+            try
+            {
+                return JsonSerializer.Deserialize<List<PlanoContaViewModel>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro de desserialização: " + ex.Message);
+                Console.WriteLine("JSON retornado: " + json);
+                throw;
+            }
         }
 
         public async Task<PlanoContaViewModel> BuscarPorIdAsync(int id)

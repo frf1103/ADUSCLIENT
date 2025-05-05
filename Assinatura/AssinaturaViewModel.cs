@@ -41,5 +41,8 @@ namespace ADUSClient.Assinatura
 
         [DisplayName("Observação")]
         public string? observacao { get; set; }
+
+        [DisplayName("Plataforma")]
+        public string? plataforma { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,5 +30,7 @@ namespace ADUSClient.Assinatura
 
         public string descstatus { get; set; }
         public string descforma { get; set; }
+
+        public string? plataforma { get; set; }
     }
 }
