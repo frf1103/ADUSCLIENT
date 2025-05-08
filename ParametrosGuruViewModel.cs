@@ -37,5 +37,23 @@ namespace ADUSClient
 
         [DisplayName("Centro de Custo Padrão")]
         public int? idccusto { get; set; }
+
+        [DisplayName("Conta Taxa Plataforma")]
+        public int? idcategoriataxa { get; set; }
+
+        [DisplayName("Conta Tx Antecipacao")]
+        public int? idcategoriaant { get; set; }
+
+        [DisplayName("Conta Comissão")]
+        public int? idcategoriacomiss { get; set; }
+
+        [DisplayName("Transação Comissão")]
+        public int? idtransacaocomiss { get; set; }
+
+        [DisplayName("Transação Taxa Plataforma")]
+        public int? idtransacaotaxa { get; set; }
+
+        [DisplayName("Transação Taxa Antecipação")]
+        public int? idtransacaoant { get; set; }
     }
 }

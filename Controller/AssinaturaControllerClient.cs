@@ -74,6 +74,30 @@ namespace ADUSClient.Controller
             return response;
         }
 
+        public async Task<AssinaturaViewModel> Cancelar(string id,string motivo)
+        {
+            AssinaturaViewModel reg = new AssinaturaViewModel();
+
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var response = await _httpClient.GetAsync("api/Assinatura/cancelar/" + id.ToString()+"?motivo="+motivo);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            if (jsonResponse != "")
+            {
+                var c = System.Text.Json.JsonSerializer.Deserialize<AssinaturaViewModel>(jsonResponse);
+                if (c != null)
+                {
+                    return c;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else return null;
+        }
+
         public async Task<HttpResponseMessage> Excluir(string id)
         {
             _httpClient.DefaultRequestHeaders.Accept.Clear();

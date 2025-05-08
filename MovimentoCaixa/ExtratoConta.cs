@@ -17,5 +17,7 @@ namespace ADUSClient.MovimentoCaixa
         public decimal? saldo { get; set; }
         public string? idmovbanco { get; set; }
         public string tipo { get; set; }
+        public string desctransacao { get; set; }
+        public string nomeparceiro { get; set; }
     }
 }
