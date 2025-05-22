@@ -11,5 +11,7 @@ namespace ADUSClient.Localidade
         public string codigoIBGE { get; set; }
 
         public int idUF { get; set; }
+        public string? nomeuf { get; set; }
+        public string? siglauf { get; set; }
     }
 }

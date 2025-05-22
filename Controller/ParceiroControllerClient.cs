@@ -18,14 +18,15 @@ namespace ADUSClient.Controller
             _httpClient = httpClient;
         }
 
-        public async Task<List<ListParceiroViewModel>> Lista(string? filtro)
+        public async Task<List<ListParceiroViewModel>> Lista(string? filtro, bool? isassinante, bool? isbanco, bool? isafiliado, bool? iscoprodutor)
         {
             ListParceiroViewModel reg = new ListParceiroViewModel();
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            var response = await _httpClient.GetAsync("api/Parceiro?filtro=" + filtro);
+            var response = await _httpClient.GetAsync("api/Parceiro?filtro=" + filtro + "&isassinante=" + isassinante +
+                "&isbanco=" + isbanco + "&isafiliado=" + isafiliado + "&iscoprodutor=" + iscoprodutor);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
             var c = System.Text.Json.JsonSerializer.Deserialize<List<ListParceiroViewModel>>(jsonResponse);
@@ -47,6 +48,30 @@ namespace ADUSClient.Controller
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/Parceiro/" + id.ToString());
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            if (jsonResponse != "")
+            {
+                var c = System.Text.Json.JsonSerializer.Deserialize<ParceiroViewModel>(jsonResponse);
+                if (c != null)
+                {
+                    return c;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else return null;
+        }
+
+        public async Task<ParceiroViewModel> ListaByEmail(string id)
+        {
+            ParceiroViewModel reg = new ParceiroViewModel();
+
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var response = await _httpClient.GetAsync("api/Parceiro/email/" + id.ToString());
             var jsonResponse = await response.Content.ReadAsStringAsync();
             if (jsonResponse != "")
             {

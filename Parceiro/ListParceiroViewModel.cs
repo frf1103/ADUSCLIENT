@@ -1,6 +1,7 @@
 ﻿using ADUSClient.Enum;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,5 +47,18 @@ namespace ADUSClient.Parceiro
 
         public string desctipo { get; set; }
         public string descestadocivil { get; set; }
+
+        public bool isassinante { get; set; } = true;
+
+        public bool isbanco { get; set; } = false;
+
+        public bool iscoprodutor { get; set; } = false;
+
+        public bool isafiliado { get; set; } = false;
+
+        public string? idcoprodutor { get; set; }
+
+        public decimal? percomissao { get; set; }
+        public string urlafiliado { get; set; }
     }
 }

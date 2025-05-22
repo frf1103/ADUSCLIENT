@@ -55,7 +55,7 @@ namespace ADUSClient.Parceiro
 
         [Required(ErrorMessage = "O campo é obrigatório.")]
         [DisplayName("Cidade")]
-        public int idcidade { get; set; }
+        public int idCidade { get; set; }
 
         [Required(ErrorMessage = "O campo é obrigatório.")]
         [DisplayName("Profissão")]
@@ -93,5 +93,30 @@ namespace ADUSClient.Parceiro
         [Required(ErrorMessage = "O campo é obrigatório.")]
         [DisplayName("Sexo")]
         public TipoSexo sexo { get; set; }
+
+        [DisplayName("Assinante")]
+        public bool isassinante { get; set; } = true;
+
+        [DisplayName("Banco")]
+        public bool isbanco { get; set; } = false;
+
+        [DisplayName("Coprodutor")]
+        public bool iscoprodutor { get; set; } = false;
+
+        [DisplayName("Afiliado")]
+        public bool isafiliado { get; set; } = false;
+
+        [DisplayName("ID do Coprodutor")]
+        public string? idcoprodutor { get; set; }
+
+        [DisplayName("%Comissão")]
+        public decimal? percomissao { get; set; }
+
+        public string? nomecidade { get; set; }
+
+        public string? nomeuf { get; set; }
+
+        [DisplayName("Link do Afiliado")]
+        public string urlafiliado { get; set; }
     }
 }
