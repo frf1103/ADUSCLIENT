@@ -38,6 +38,27 @@ namespace ADUSClient.Controller
             }
         }
 
+        public async Task<List<UFViewModel>> ListaUFBySigla(string? filtro)
+        {
+            //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            string x = "api/localidade/ufs/sigla?filtro=" + filtro;
+            var response = await _httpClient.GetAsync(x);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var c = System.Text.Json.JsonSerializer.Deserialize<List<UFViewModel>>(jsonResponse);
+            if (c != null)
+            {
+                return c;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public async Task<UFViewModel> ListaUFIBGE(string ibge)
         {
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");

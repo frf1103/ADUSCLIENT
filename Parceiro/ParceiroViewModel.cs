@@ -118,5 +118,8 @@ namespace ADUSClient.Parceiro
 
         [DisplayName("Link do Afiliado")]
         public string urlafiliado { get; set; }
+
+        [DisplayName("Wallet do Parceiro")]
+        public string? idwallet { get; set; }
     }
 }

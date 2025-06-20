@@ -38,6 +38,27 @@ namespace ADUSClient.Controller
             }
         }
 
+        public async Task<List<ListAssinaturaViewModel>> ListaByAfiliado(string idafiliado, DateTime ini, DateTime fim, string idparceiro, string status, int forma, string? filtro)
+        {
+            ListAssinaturaViewModel reg = new ListAssinaturaViewModel();
+            //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var response = await _httpClient.GetAsync("api/Assinatura/listarbyafiliado/" + idafiliado.ToString() + "/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd") + "/" + status.ToString() + "/" + idparceiro.ToString() + "/" + forma.ToString() + "?filtro=" + filtro);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var c = System.Text.Json.JsonSerializer.Deserialize<List<ListAssinaturaViewModel>>(jsonResponse);
+            if (c != null)
+            {
+                return c;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public async Task<AssinaturaViewModel> ListaById(string id)
         {
             AssinaturaViewModel reg = new AssinaturaViewModel();
@@ -74,14 +95,14 @@ namespace ADUSClient.Controller
             return response;
         }
 
-        public async Task<AssinaturaViewModel> Cancelar(string id,string motivo)
+        public async Task<AssinaturaViewModel> Cancelar(string id, string motivo)
         {
             AssinaturaViewModel reg = new AssinaturaViewModel();
 
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            var response = await _httpClient.GetAsync("api/Assinatura/cancelar/" + id.ToString()+"?motivo="+motivo);
+            var response = await _httpClient.GetAsync("api/Assinatura/cancelar/" + id.ToString() + "?motivo=" + motivo);
             var jsonResponse = await response.Content.ReadAsStringAsync();
             if (jsonResponse != "")
             {

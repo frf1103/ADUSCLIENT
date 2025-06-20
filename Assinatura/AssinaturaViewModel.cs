@@ -44,5 +44,7 @@ namespace ADUSClient.Assinatura
 
         [DisplayName("Plataforma")]
         public string? plataforma { get; set; }
+
+        public string? idafiliado { get; set; }
     }
 }

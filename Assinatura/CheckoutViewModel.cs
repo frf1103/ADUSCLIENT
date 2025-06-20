@@ -8,7 +8,6 @@ namespace ADUSClient.Assinatura
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "CPF ou CNPJ é obrigatório")]
-        //[RegularExpression(@"^\d{11}|\d{14}$", ErrorMessage = "Informe um CPF (11 dígitos) ou CNPJ (14 dígitos)")]
         public string cpfCnpj { get; set; }
 
         [Required(ErrorMessage = "E-mail é obrigatório")]
@@ -20,7 +19,6 @@ namespace ADUSClient.Assinatura
         public string EmailConfirmacao { get; set; }
 
         [Required(ErrorMessage = "Quantidade de árvores é obrigatória")]
-   //     [Range(1, 100, ErrorMessage = "Quantidade deve ser entre 1 e 100")]
         public int QuantidadeArvores { get; set; }
 
         [Required(ErrorMessage = "DDI é obrigatório")]
@@ -66,6 +64,9 @@ namespace ADUSClient.Assinatura
         public string? PayloadQrCode { get; set; }
         public string? TipoPagamentoEfetivado { get; set; }
 
+        public string? idafiliado { get; set; }
+
+        
         // Valor calculado no backend
         public decimal ValorTotal => QuantidadeArvores * 47;
     }

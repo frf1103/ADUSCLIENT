@@ -64,6 +64,30 @@ namespace ADUSClient.Controller
             else return null;
         }
 
+        public async Task<ParceiroViewModel> ListaByRegistro(string id)
+        {
+            ParceiroViewModel reg = new ParceiroViewModel();
+
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var response = await _httpClient.GetAsync("api/Parceiro/registro/" + id.ToString());
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            if (jsonResponse != "")
+            {
+                var c = System.Text.Json.JsonSerializer.Deserialize<ParceiroViewModel>(jsonResponse);
+                if (c != null)
+                {
+                    return c;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else return null;
+        }
+
         public async Task<ParceiroViewModel> ListaByEmail(string id)
         {
             ParceiroViewModel reg = new ParceiroViewModel();
