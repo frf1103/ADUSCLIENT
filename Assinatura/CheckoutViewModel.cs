@@ -34,7 +34,7 @@ namespace ADUSClient.Assinatura
 
         public string Logradouro { get; set; }
         public string Numero { get; set; }
-        public string Complemento { get; set; }
+        public string? Complemento { get; set; }
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
@@ -45,14 +45,14 @@ namespace ADUSClient.Assinatura
         public int? Parcelas { get; set; }
         public DateTime? DataVencimento { get; set; }
 
-        public string NumeroCartao { get; set; }
-        public string NomeTitular { get; set; }
+        public string? NumeroCartao { get; set; }
+        public string? NomeTitular { get; set; }
 
-        [RegularExpression(@"^(0[1-9]|1[0-2])/\d{4}$", ErrorMessage = "Formato de validade deve ser MM/AAAA")]
-        public string Validade { get; set; }
+        //  [RegularExpression(@"^(0[1-9]|1[0-2])/\d{4}$", ErrorMessage = "Formato de validade deve ser MM/AAAA")]
+        public string? Validade { get; set; }
 
-        [RegularExpression(@"\d{3,4}", ErrorMessage = "CVV inválido")]
-        public string Cvv { get; set; }
+        // [RegularExpression(@"\d{3,4}", ErrorMessage = "CVV inválido")]
+        public string? Cvv { get; set; }
 
         // Dados de retorno da cobrança
         public string? IdClienteAsaas { get; set; }
@@ -66,8 +66,8 @@ namespace ADUSClient.Assinatura
 
         public string? idafiliado { get; set; }
 
-        
         // Valor calculado no backend
         public decimal ValorTotal => QuantidadeArvores * 47;
+       
     }
 }
