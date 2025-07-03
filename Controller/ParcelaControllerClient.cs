@@ -171,5 +171,27 @@ namespace ADUSClient.Controller
             }
             else return null;
         }
+
+        public async Task<List<ListParcelaViewModel>> ListaPendentesEnvio(DateTime ini, DateTime fim, string? idassinatura = " ", int? idforma = 3)
+        {
+            ListParcelaViewModel reg = new ListParcelaViewModel();
+            //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            string x = "api/Parcela/envio/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd") + "?idassinatura=" + idassinatura.ToString() + "&idforma=" + idforma.ToString();
+            var response = await _httpClient.GetAsync(x);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var c = System.Text.Json.JsonSerializer.Deserialize<List<ListParcelaViewModel>>(jsonResponse);
+            if (c != null)
+            {
+                return c;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

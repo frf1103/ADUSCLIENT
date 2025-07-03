@@ -40,5 +40,11 @@ namespace ADUSClient.Parcela
         public string descforma { get; set; }
         public string status { get; set; }
         public DateTime? dataestimadapagto { get; set; }
+        public string? cctoken { get; set; }
+
+        public string? idafiliado { get; set; }
+        public string? registro { get; set; }
+        public string? billingType { get; set; }
+        public int? quantidadeArvores { get; set; }
     }
 }
