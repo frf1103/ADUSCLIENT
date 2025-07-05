@@ -18,7 +18,11 @@ namespace ADUSClient.Controller
         {
             var response = await _httpClient.GetAsync($"api/ccassina/assinatura/{idAssinatura}");
             var content = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<List<CartaoAssinaturaViewModel>>(content);
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            return JsonSerializer.Deserialize<List<CartaoAssinaturaViewModel>>(content, options);
         }
 
         public async Task<CartaoAssinaturaViewModel> GetById(int id)

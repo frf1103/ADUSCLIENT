@@ -17,14 +17,21 @@ namespace ADUSClient.Controller
             _httpClient = httpClient;
         }
 
-        public async Task<List<LogCheckoutViewModel>> Listar(DateTime ini, DateTime fim, string? filtro)
+        public async Task<PagedResult<LogCheckoutViewModel>> Listar(DateTime ini, DateTime fim, string? filtro, int pageindex, int pagesize)
         {
-            var response = await _httpClient.GetAsync("api/logcheckout/listar/" + ini.ToString("yyyy-MM-dd") +
-                "/" + fim.ToString("yyyy-MM-dd") + "/" + filtro);
+            var url = $"api/logcheckout/listar/{ini:yyyy-MM-dd}/{fim:yyyy-MM-dd}/{pageindex}/{pagesize}";
+
+            var response = await _httpClient.GetAsync(url + "?filtro=" + filtro);
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<List<LogCheckoutViewModel>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            var pagedResult = JsonSerializer.Deserialize<PagedResult<LogCheckoutViewModel>>(content, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            return pagedResult;
         }
 
         public async Task<LogCheckoutViewModel> GetById(int id)
@@ -50,6 +57,14 @@ namespace ADUSClient.Controller
         public async Task<HttpResponseMessage> Excluir(int id)
         {
             return await _httpClient.DeleteAsync($"api/logcheckout/{id}");
+        }
+
+        public class PagedResult<T>
+        {
+            public int TotalCount { get; set; }
+            public int PageIndex { get; set; }
+            public int PageSize { get; set; }
+            public List<T> Data { get; set; }
         }
     }
 }

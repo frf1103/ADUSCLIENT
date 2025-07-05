@@ -121,5 +121,9 @@ namespace ADUSClient.Parceiro
 
         [DisplayName("Wallet do Parceiro")]
         public string? idwallet { get; set; }
+
+        public string? idwalletcoprodutor { get; set; }
+
+        public decimal? percomissaocoprodutor { get; set; }
     }
 }
