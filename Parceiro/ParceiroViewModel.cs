@@ -68,6 +68,8 @@ namespace ADUSClient.Parceiro
         [DisplayName("Representante Legal")]
         public string? idRepresentante { get; set; }
 
+        public ParceiroViewModel? representante { get; set; }
+
         [Required(ErrorMessage = "O campo é obrigatório.")]
         [DataType(DataType.Date)]
         [DisplayName("Dt Nascimento")]
@@ -117,7 +119,7 @@ namespace ADUSClient.Parceiro
         public string? nomeuf { get; set; }
 
         [DisplayName("Link do Afiliado")]
-        public string urlafiliado { get; set; }
+        public string? urlafiliado { get; set; }
 
         [DisplayName("Wallet do Parceiro")]
         public string? idwallet { get; set; }
