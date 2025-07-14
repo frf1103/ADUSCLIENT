@@ -63,7 +63,7 @@ namespace ADUSClient.Parceiro
 
         [Required(ErrorMessage = "O campo é obrigatório.")]
         [DisplayName("Estado Civil")]
-        public int estadoCivil { get; set; }
+        public TipoEstadoCivil estadoCivil { get; set; }
 
         [DisplayName("Representante Legal")]
         public string? idRepresentante { get; set; }

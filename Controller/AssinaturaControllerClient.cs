@@ -17,10 +17,12 @@ namespace ADUSClient.Controller
             _httpClient = httpClient;
         }
 
-        public async Task<List<ListAssinaturaViewModel>> Lista(DateTime ini, DateTime fim, string idparceiro, string status, int forma, string? filtro)
+        public async Task<List<ListAssinaturaViewModel>> Lista(DateTime ini, DateTime fim, string idparceiro, string status, int forma, string? filtro, string? idafiliado = "", string? idcoprodutor = "")
         {
             ListAssinaturaViewModel reg = new ListAssinaturaViewModel();
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
+            idafiliado = string.IsNullOrEmpty(idafiliado) ? "0" : idafiliado;
+            idcoprodutor = string.IsNullOrEmpty(idcoprodutor) ? "0" : idcoprodutor;
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
@@ -38,14 +40,14 @@ namespace ADUSClient.Controller
             }
         }
 
-        public async Task<List<ListAssinaturaViewModel>> ListaByAfiliado(string idafiliado, DateTime ini, DateTime fim, string idparceiro, string status, int forma, string? filtro)
+        public async Task<List<ListAssinaturaViewModel>> ListaByAfiliado(string idafiliado, int tipo, DateTime ini, DateTime fim, string idparceiro, string status, int forma, string? filtro)
         {
             ListAssinaturaViewModel reg = new ListAssinaturaViewModel();
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            var response = await _httpClient.GetAsync("api/Assinatura/listarbyafiliado/" + idafiliado.ToString() + "/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd") + "/" + status.ToString() + "/" + idparceiro.ToString() + "/" + forma.ToString() + "?filtro=" + filtro);
+            var response = await _httpClient.GetAsync("api/Assinatura/listarbyafiliado/" + idafiliado.ToString() + "/" + tipo.ToString() + "/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd") + "/" + status.ToString() + "/" + idparceiro.ToString() + "/" + forma.ToString() + "?filtro=" + filtro);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
             var c = System.Text.Json.JsonSerializer.Deserialize<List<ListAssinaturaViewModel>>(jsonResponse);

@@ -46,5 +46,6 @@ namespace ADUSClient.Parcela
         public string? registro { get; set; }
         public string? billingType { get; set; }
         public int? quantidadeArvores { get; set; }
+        public bool? ischeckout { get; set; }
     }
 }

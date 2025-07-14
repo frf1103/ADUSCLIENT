@@ -17,14 +17,14 @@ namespace ADUSClient.Controller
             _httpClient = httpClient;
         }
 
-        public async Task<List<ListParcelaViewModel>> ListarParcela(DateTime ini, DateTime fim, int tipodata, int status = 0, string idparceiro = "0", int forma = 3, string idassinatura = "0", string? filtro = "")
+        public async Task<List<ListParcelaViewModel>> ListarParcela(DateTime ini, DateTime fim, int tipodata, int status = 0, string idparceiro = "0", int forma = 3, string idassinatura = "0", string? filtro = "", int? checkout = 2)
         {
             ListParcelaViewModel reg = new ListParcelaViewModel();
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            string x = "api/Parcela/listar/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd") + "/" + status.ToString() + "/" + idparceiro.ToString() + "/" + forma.ToString() + "/" + tipodata.ToString() + "/" + idassinatura + "?filtro=" + filtro;
+            string x = "api/Parcela/listar/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd") + "/" + status.ToString() + "/" + idparceiro.ToString() + "/" + forma.ToString() + "/" + tipodata.ToString() + "/" + idassinatura + "/" + checkout.ToString() + "?filtro=" + filtro;
             var response = await _httpClient.GetAsync(x);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
