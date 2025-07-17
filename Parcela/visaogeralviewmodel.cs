@@ -23,6 +23,8 @@ namespace ADUSClient.Parcela
         public decimal valortotal { get; set; }
         public int arvores { get; set; }
         public decimal acompensar { get; set; }
+        public string fone { get; set; }
+        public string email { get; set; }
     }
 }
 
