@@ -55,5 +55,12 @@ namespace ADUSClient
 
         [DisplayName("Transação Taxa Antecipação")]
         public int? idtransacaoant { get; set; }
+
+        public string? emailassinei { get; set; }
+        public string? senhaassinei { get; set; }
+        public string? subscriptionkeyassinei { get; set; }
+        public string? tenantassinei { get; set; }
+        public string? loginassinei { get; set; }
+        public string? senhaloginassinei { get; set; }
     }
 }

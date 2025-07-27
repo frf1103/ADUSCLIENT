@@ -85,6 +85,30 @@ namespace ADUSClient.Controller
             else return null;
         }
 
+        public async Task<AssinaturaContratoViewModel> ListaContratoById(string id)
+        {
+            AssinaturaViewModel reg = new AssinaturaViewModel();
+
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var response = await _httpClient.GetAsync("api/Assinatura/contrato/" + id.ToString());
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            if (jsonResponse != "")
+            {
+                var c = System.Text.Json.JsonSerializer.Deserialize<AssinaturaContratoViewModel>(jsonResponse);
+                if (c != null)
+                {
+                    return c;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else return null;
+        }
+
         public async Task<HttpResponseMessage> Salvar(string id, AssinaturaViewModel dados)
         {
             _httpClient.DefaultRequestHeaders.Accept.Clear();
