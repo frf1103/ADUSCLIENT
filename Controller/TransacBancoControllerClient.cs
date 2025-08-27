@@ -16,10 +16,6 @@ namespace ADUSClient.Controller
 
         public async Task<List<TransacBancoViewModel>> ListarTodos()
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
             var response = await _httpClient.GetAsync("api/transacbanco");
             var json = await response.Content.ReadAsStringAsync();
 
@@ -28,10 +24,6 @@ namespace ADUSClient.Controller
 
         public async Task<TransacBancoViewModel?> ObterPorId(string id, int bancoid)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
             var response = await _httpClient.GetAsync($"api/transacbanco/{id}/{bancoid.ToString()}");
             var json = await response.Content.ReadAsStringAsync();
 
@@ -40,10 +32,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Adicionar(TransacBancoViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
             var json = JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -52,10 +40,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Editar(TransacBancoViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
             var json = JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -64,10 +48,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Excluir(string idTransacBanco, int idBanco)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
             return await _httpClient.DeleteAsync($"api/transacbanco/{idTransacBanco}/{idBanco}");
         }
     }

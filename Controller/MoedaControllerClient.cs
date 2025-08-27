@@ -22,9 +22,6 @@ namespace ADUSClient.Controller
         {
             MoedaViewModel reg = new MoedaViewModel();
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/moeda/?filtro=" + filtro);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -43,9 +40,6 @@ namespace ADUSClient.Controller
         {
             MoedaViewModel reg = new MoedaViewModel();
 
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/moeda/" + id.ToString());
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -62,9 +56,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Salvar(int id, MoedaViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -74,9 +65,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Excluir(int id)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             //var json = System.Text.Json.JsonSerializer.Serialize(dados);
             //var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -86,9 +74,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Adicionar(MoedaViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -100,9 +85,6 @@ namespace ADUSClient.Controller
         {
             CotacaoMoedaViewModel reg = new CotacaoMoedaViewModel();
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/cotacaomoeda/Listar/" + idMoeda.ToString() + "?ini=" + ini.ToString("MM/dd/yyyy") + "&fim=" + fim.ToString("MM/dd/yyyy"));
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -121,9 +103,6 @@ namespace ADUSClient.Controller
         {
             CotacaoMoedaViewModel reg = new CotacaoMoedaViewModel();
 
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/cotacaomoeda/" + id.ToString());
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -140,9 +119,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> SalvarCotacao(int id, CotacaoMoedaViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -152,9 +128,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> ExcluirCotacao(int id)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             //var json = System.Text.Json.JsonSerializer.Serialize(dados);
             //var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -164,9 +137,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> AdicionarCotacao(CotacaoMoedaViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 

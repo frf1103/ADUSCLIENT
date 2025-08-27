@@ -16,9 +16,6 @@ namespace ADUSClient.Controller
 
         public async Task<List<TransacaoViewModel>> Listar(string? filtro)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
             var response = await _httpClient.GetAsync("api/Transacao/listar?filtro=" + filtro);
             var content = await response.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<List<TransacaoViewModel>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new();
@@ -26,9 +23,6 @@ namespace ADUSClient.Controller
 
         public async Task<TransacaoViewModel> ListaById(int id)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
             var response = await _httpClient.GetAsync($"api/Transacao/{id}");
             var content = await response.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<TransacaoViewModel>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
@@ -36,7 +30,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Adicionar(TransacaoViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
             var json = JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -45,7 +38,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Editar(int id, TransacaoViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
             var json = JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -54,7 +46,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Excluir(int id)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
             return await _httpClient.DeleteAsync($"api/Transacao/{id}");
         }
     }

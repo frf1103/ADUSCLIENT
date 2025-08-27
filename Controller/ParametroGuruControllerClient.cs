@@ -20,9 +20,6 @@ namespace ADUSClient.Controller
         {
             ParametrosGuruViewModel reg = new ParametrosGuruViewModel();
 
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/ParametroGuru/" + id.ToString());
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -39,9 +36,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Salvar(string id, ParametrosGuruViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 

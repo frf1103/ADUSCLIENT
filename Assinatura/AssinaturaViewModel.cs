@@ -46,5 +46,26 @@ namespace ADUSClient.Assinatura
         public string? plataforma { get; set; }
 
         public string? idafiliado { get; set; }
+        public bool origemadus { get; set; } = true;
+    }
+
+    public class MinhaParcelaViewModel
+    {
+        public int numparcela { get; set; }
+        public int? idcaixa { get; set; }
+
+        public DateTime datavencimento { get; set; }
+        public DateTime? databaixa { get; set; }
+
+        public decimal valor { get; set; }
+
+        public string? nossonumero { get; set; }
+
+        public string nomeparceiro { get; set; }
+
+        public DateTime? dataestimadapagto { get; set; }
+        public bool ischeckout { get; set; }
+
+        public string status { get; set; }
     }
 }

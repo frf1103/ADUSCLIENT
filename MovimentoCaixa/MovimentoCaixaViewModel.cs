@@ -52,6 +52,8 @@ namespace ADUSClient.MovimentoCaixa
         public string? nomeparceiro { get; set; }
         public string? idmovbanco { get; set; }
 
+        public string? idparcela { get; set; }
+
         private decimal ParseDecimal(string valor)
         {
             if (string.IsNullOrWhiteSpace(valor)) return 0;

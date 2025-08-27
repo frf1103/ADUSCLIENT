@@ -45,9 +45,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Adicionar(LogCheckoutViewModel model)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
             var json = JsonSerializer.Serialize(model);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 

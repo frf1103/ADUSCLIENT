@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ADUSClient.Controller
@@ -23,9 +24,6 @@ namespace ADUSClient.Controller
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
             idafiliado = string.IsNullOrEmpty(idafiliado) ? "0" : idafiliado;
             idcoprodutor = string.IsNullOrEmpty(idcoprodutor) ? "0" : idcoprodutor;
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/Assinatura/listar/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd") + "/" + status.ToString() + "/" + idparceiro.ToString() + "/" + forma.ToString() + "?filtro=" + filtro);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -44,9 +42,6 @@ namespace ADUSClient.Controller
         {
             ListAssinaturaViewModel reg = new ListAssinaturaViewModel();
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/Assinatura/listarbyafiliado/" + idafiliado.ToString() + "/" + tipo.ToString() + "/" + ini.ToString("yyyy-MM-dd") + "/" + fim.ToString("yyyy-MM-dd") + "/" + status.ToString() + "/" + idparceiro.ToString() + "/" + forma.ToString() + "?filtro=" + filtro);
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
@@ -65,9 +60,6 @@ namespace ADUSClient.Controller
         {
             AssinaturaViewModel reg = new AssinaturaViewModel();
 
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/Assinatura/" + id.ToString());
             var jsonResponse = await response.Content.ReadAsStringAsync();
             if (jsonResponse != "")
@@ -85,13 +77,33 @@ namespace ADUSClient.Controller
             else return null;
         }
 
+        public async Task<MinhaAssinaturaViewModel> MinhasAssinaturas(string id)
+        {
+            var response = await _httpClient.GetAsync("api/Assinatura/minhasassinaturas/" + id.ToString());
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            if (jsonResponse != "")
+            {
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true // <- chave para ignorar case
+                };
+                var c = System.Text.Json.JsonSerializer.Deserialize<MinhaAssinaturaViewModel>(jsonResponse, options);
+                if (c != null)
+                {
+                    return c;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else return null;
+        }
+
         public async Task<AssinaturaContratoViewModel> ListaContratoById(string id)
         {
             AssinaturaViewModel reg = new AssinaturaViewModel();
 
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/Assinatura/contrato/" + id.ToString());
             var jsonResponse = await response.Content.ReadAsStringAsync();
             if (jsonResponse != "")
@@ -111,9 +123,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Salvar(string id, AssinaturaViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -125,9 +134,6 @@ namespace ADUSClient.Controller
         {
             AssinaturaViewModel reg = new AssinaturaViewModel();
 
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/Assinatura/cancelar/" + id.ToString() + "?motivo=" + motivo);
             var jsonResponse = await response.Content.ReadAsStringAsync();
             if (jsonResponse != "")
@@ -147,9 +153,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Excluir(string id)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             //var json = System.Text.Json.JsonSerializer.Serialize(dados);
             //var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -159,9 +162,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Adicionar(AssinaturaViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 

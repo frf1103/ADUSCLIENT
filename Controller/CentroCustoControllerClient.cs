@@ -16,9 +16,6 @@ namespace ADUSClient.Controller
 
         public async Task<List<CentroCustoViewModel>> Listar(string? filtro)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
             var response = await _httpClient.GetAsync($"api/centrocusto?filtro={Uri.EscapeDataString(filtro ?? "")}");
             var json = await response.Content.ReadAsStringAsync();
 

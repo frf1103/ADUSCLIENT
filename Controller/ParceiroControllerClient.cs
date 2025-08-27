@@ -22,9 +22,6 @@ namespace ADUSClient.Controller
         {
             ListParceiroViewModel reg = new ListParceiroViewModel();
             //  _httpClient.BaseAddress = new Uri("http://localhost:5001");
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/Parceiro?filtro=" + filtro + "&isassinante=" + isassinante +
                 "&isbanco=" + isbanco + "&isafiliado=" + isafiliado + "&iscoprodutor=" + iscoprodutor);
             var jsonResponse = await response.Content.ReadAsStringAsync();
@@ -44,9 +41,6 @@ namespace ADUSClient.Controller
         {
             ParceiroViewModel reg = new ParceiroViewModel();
 
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/Parceiro/" + id.ToString());
             var jsonResponse = await response.Content.ReadAsStringAsync();
             if (jsonResponse != "")
@@ -68,9 +62,6 @@ namespace ADUSClient.Controller
         {
             ParceiroViewModel reg = new ParceiroViewModel();
 
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/Parceiro/registro/" + id.ToString());
             var jsonResponse = await response.Content.ReadAsStringAsync();
             if (jsonResponse != "")
@@ -92,9 +83,6 @@ namespace ADUSClient.Controller
         {
             ParceiroViewModel reg = new ParceiroViewModel();
 
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.GetAsync("api/Parceiro/email/" + id.ToString());
             var jsonResponse = await response.Content.ReadAsStringAsync();
             if (jsonResponse != "")
@@ -114,9 +102,6 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Salvar(string id, ParceiroViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -126,21 +111,12 @@ namespace ADUSClient.Controller
 
         public async Task<HttpResponseMessage> Excluir(string id)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            //var json = System.Text.Json.JsonSerializer.Serialize(dados);
-            //var content = new StringContent(json, Encoding.UTF8, "application/json");
-
             var response = await _httpClient.DeleteAsync("api/Parceiro/" + id.ToString());
             return response;
         }
 
         public async Task<HttpResponseMessage> Adicionar(ParceiroViewModel dados)
         {
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
             var json = System.Text.Json.JsonSerializer.Serialize(dados);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
